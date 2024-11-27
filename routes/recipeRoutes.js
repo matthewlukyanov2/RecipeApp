@@ -9,7 +9,24 @@ router.post('/recipes', async (req, res) => {
     const instructions = req.body.instructions;
     const cookingTime = req.body.cookingTime;
 
-    res.status(200).send("POST route setup for creating recipes");
+    try {
+        // Create a new Recipe instance
+        const newRecipe = new Recipe({
+            title,
+            ingredients,
+            instructions,
+            cookingTime,
+        });
+
+        // Save the new recipe to the database
+        await newRecipe.save();
+
+        // Send the created recipe as the response
+        res.status(201).json(newRecipe);
+    } catch (err) {
+        console.error(err);
+        res.status(400).send("Error saving recipe");
+  }
 });
 
 module.exports = router;
