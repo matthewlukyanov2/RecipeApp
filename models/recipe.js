@@ -6,6 +6,7 @@ const RecipeSchema = new mongoose.Schema({
     ingredients: { type: [String], required: true },  // List of ingredients
     instructions: { type: String, required: true },   // Cooking instructions
     cookingTime: { type: Number, required: true },    // Cooking time in minutes
+    createdAt: { type: Date, default: Date.now }      // Auto-generated timestamp
 });
 
 // Create and export the Recipe model
