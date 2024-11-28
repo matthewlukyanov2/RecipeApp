@@ -29,4 +29,17 @@ router.post('/recipes', async (req, res) => {
   }
 });
 
+// GET route to fetch all recipes
+router.get('/recipes', async (req, res) => {
+    try {
+        const recipes = await Recipe.find(); // Fetch recipes from MongoDB
+        res.status(200).json(recipes); // Return the fetched recipes
+    } catch (err) {
+        console.error(err);
+        res.status(400).send('Error fetching recipes');
+    }
+});
+
+
+
 module.exports = router;
