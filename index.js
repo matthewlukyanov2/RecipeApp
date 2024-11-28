@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const recipeRoutes = require('./routes/recipeRoutes');
 require('dotenv').config(); // Allows us to use the `.env` file
 
 const app = express(); // Initialize Express
@@ -15,6 +16,7 @@ app.use(bodyParser.json()); // Parse JSON bodies
 app.get('/', (req, res) => {
     res.send('API is running...');
 });
+app.use('/api', recipeRoutes);
 
 // Connect to MongoDB
 mongoose
