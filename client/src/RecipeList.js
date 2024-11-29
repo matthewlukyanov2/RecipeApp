@@ -6,6 +6,19 @@ const RecipeList = () => {
     const [loading, setLoading] = useState(true); 
 }  
 
+// Fetch recipes from the API
+useEffect(() => {
+    axios.get('http://localhost:4000/api/recipes')
+      .then((response) => {
+        setRecipes(response.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error('Error fetching recipes:', error);
+        setLoading(false);
+      });
+  }, []);
+
 
 
 export default RecipeList;
