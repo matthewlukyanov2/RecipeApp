@@ -19,6 +19,28 @@ useEffect(() => {
       });
   }, []);
 
+  if (loading) {
+    return <div>Loading recipes...</div>;
+  }
 
+  return (
+    <div>
+      <h1>Recipe List</h1>
+      <ul>
+        {recipes.length > 0 ? (
+          recipes.map((recipe) => (
+            <li key={recipe._id}>
+              <h3>{recipe.title}</h3>
+              <p><strong>Ingredients:</strong> {recipe.ingredients.join(', ')}</p>
+              <p><strong>Instructions:</strong> {recipe.instructions}</p>
+              <p><strong>Cooking Time:</strong> {recipe.cookingTime} minutes</p>
+            </li>
+          ))
+        ) : (
+          <p>No recipes found.</p>
+        )}
+      </ul>
+    </div>
+  );
 
 export default RecipeList;
