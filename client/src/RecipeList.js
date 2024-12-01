@@ -2,12 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const RecipeList = () => {
-    const [recipes, setRecipes] = useState([]);  // State to store recipes
-    const [loading, setLoading] = useState(true); 
-}  
+  const [recipes, setRecipes] = useState([]);  // State to store recipes
+  const [loading, setLoading] = useState(true); // Loading state to show when fetching data
 
-// Fetch recipes from the API
-useEffect(() => {
+  // Fetch recipes from the API
+  useEffect(() => {
     axios.get('http://localhost:4000/api/recipes')
       .then((response) => {
         setRecipes(response.data);
@@ -19,6 +18,7 @@ useEffect(() => {
       });
   }, []);
 
+  // Ensure return is inside the function
   if (loading) {
     return <div>Loading recipes...</div>;
   }
@@ -42,5 +42,6 @@ useEffect(() => {
       </ul>
     </div>
   );
+};
 
 export default RecipeList;
