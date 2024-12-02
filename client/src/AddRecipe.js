@@ -16,5 +16,20 @@ const AddRecipe = () => {
           instructions,
           cookingTime: parseInt(cookingTime)
         };
-}
+
+        axios.post('http://localhost:4000/api/recipes', newRecipe)
+        .then(response => {
+          console.log('Recipe added:', response.data);
+          //reset the form fields after a successful submission
+          setTitle('');
+          setIngredients('');
+          setInstructions('');
+          setCookingTime('');
+        })
+        .catch(error => {
+          console.error('Error adding recipe:', error);
+        });
+    };
+
+
 
