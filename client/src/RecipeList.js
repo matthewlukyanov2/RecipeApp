@@ -22,6 +22,11 @@ const RecipeList = () => {
       });
   };
 
+  
+  const deleteRecipe = (id) => {
+
+  }
+
   // Ensure return is inside the function
   if (loading) {
     return <div>Loading recipes...</div>;
