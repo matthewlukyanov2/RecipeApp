@@ -7,6 +7,10 @@ const RecipeList = () => {
 
   // Fetch recipes from the API
   useEffect(() => {
+    fetchRecipes();
+    }, []);
+
+    const fetchRecipes = () => {
     axios.get('http://localhost:4000/api/recipes')
       .then((response) => {
         setRecipes(response.data);
@@ -14,9 +18,9 @@ const RecipeList = () => {
       })
       .catch((error) => {
         console.error('Error fetching recipes:', error);
-        setLoading(false);
+        
       });
-  }, []);
+  };
 
   // Ensure return is inside the function
   if (loading) {
