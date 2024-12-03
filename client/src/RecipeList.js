@@ -22,10 +22,18 @@ const RecipeList = () => {
       });
   };
 
-  
-  const deleteRecipe = (id) => {
 
-  }
+  const deleteRecipe = (id) => {
+    axios.delete(`http://localhost:4000/api/recipes/${id}`)
+            .then(() => {
+                console.log(`Recipe with id ${id} deleted`);
+                setRecipes(recipes.filter(recipe => recipe._id !== id)); // Update UI by removing deleted recipe
+            })
+            .catch(error => {
+                console.error("Error deleting recipe:", error);
+            });
+
+  };
 
   // Ensure return is inside the function
   if (loading) {
