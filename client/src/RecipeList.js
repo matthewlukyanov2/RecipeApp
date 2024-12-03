@@ -51,6 +51,7 @@ const RecipeList = () => {
               <p><strong>Ingredients:</strong> {recipe.ingredients.join(', ')}</p>
               <p><strong>Instructions:</strong> {recipe.instructions}</p>
               <p><strong>Cooking Time:</strong> {recipe.cookingTime} minutes</p>
+              <button onClick={() => deleteRecipe(recipe._id)}>Delete</button>
             </li>
           ))
         ) : (
