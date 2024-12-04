@@ -4,6 +4,7 @@ import axios from 'axios';
 const RecipeList = () => {
   const [recipes, setRecipes] = useState([]);  // State to store recipes
   const [loading, setLoading] = useState(true); // Loading state to show when fetching data
+  const [editingRecipe, setEditingRecipe] = useState(null); // Edit form to edit any recipe
 
   // Fetch recipes from the API
   useEffect(() => {
@@ -51,6 +52,7 @@ const RecipeList = () => {
               <p><strong>Ingredients:</strong> {recipe.ingredients.join(', ')}</p>
               <p><strong>Instructions:</strong> {recipe.instructions}</p>
               <p><strong>Cooking Time:</strong> {recipe.cookingTime} minutes</p>
+              <button onClick={() => setEditingRecipe(recipe)}>Edit</button>
               <button onClick={() => deleteRecipe(recipe._id)}>Delete</button>
             </li>
           ))
