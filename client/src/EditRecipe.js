@@ -18,4 +18,45 @@ const EditRecipe = ({ recipeId, onCancel, onUpdate }) => {
             })
             .catch(error => console.error('Error updating recipe:', error));
     };
-}
+    
+    if (!recipe) return <div>Loading...</div>;
+
+    return (
+        <div className="edit-recipe">
+            <h2>Edit Recipe</h2>
+            <input
+                type="text"
+                value={recipe.title}
+                onChange={(e) => setRecipe({ ...recipe, title: e.target.value })}
+            />
+            <input
+                type="text"
+                value={recipe.ingredients.join(', ')}
+                onChange={(e) =>
+                    setRecipe({
+                        ...recipe,
+                        ingredients: e.target.value.split(',').map(i => i.trim()),
+                    })
+                }
+            />
+            <textarea
+                value={recipe.instructions}
+                onChange={(e) =>
+                    setRecipe({ ...recipe, instructions: e.target.value })
+                }
+            />
+            <input
+                type="number"
+                value={recipe.cookingTime}
+                onChange={(e) =>
+                    setRecipe({ ...recipe, cookingTime: parseInt(e.target.value) })
+                }
+            />
+            <button onClick={handleSave}>Save</button>
+            <button onClick={onCancel}>Cancel</button>
+        </div>
+    );
+};
+
+export default EditRecipe;
+
