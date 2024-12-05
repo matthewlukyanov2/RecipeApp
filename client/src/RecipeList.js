@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import EditRecipe from './EditRecipe';
 
 const RecipeList = () => {
   const [recipes, setRecipes] = useState([]);  // State to store recipes
@@ -33,7 +34,13 @@ const RecipeList = () => {
             .catch(error => {
                 console.error("Error deleting recipe:", error);
             });
+  };
 
+  const handleUpdate = (updatedRecipe) => {
+    setRecipes((prevRecipes) =>
+      prevRecipes.map((r) => (r._id === updatedRecipe._id ? updatedRecipe : r))
+    );
+    setEditingRecipeId(null);
   };
 
   // Ensure return is inside the function
