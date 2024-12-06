@@ -40,7 +40,7 @@ const RecipeList = () => {
     setRecipes((prevRecipes) =>
       prevRecipes.map((r) => (r._id === updatedRecipe._id ? updatedRecipe : r))
     );
-    setEditingRecipeId(null);
+    setEditingRecipe(null);
   };
 
   // Ensure return is inside the function
@@ -67,6 +67,15 @@ const RecipeList = () => {
           <p>No recipes found.</p>
         )}
       </ul>
+      {/* Conditionally render EditRecipe */}
+      {editingRecipe && (
+        <EditRecipe
+          recipeId={editingRecipe._id}
+          onCancel={() => setEditingRecipe(null)} 
+          onUpdate={handleUpdate} 
+        />
+      )}
+
     </div>
   );
 };

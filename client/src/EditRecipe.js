@@ -5,6 +5,7 @@ const EditRecipe = ({ recipeId, onCancel, onUpdate }) => {
     const [recipe, setRecipe] = useState(null);
 
     useEffect(() => {
+        console.log('Editing recipe ID:', recipeId); // Debugging
         axios.get(`http://localhost:4000/api/recipes/${recipeId}`)
             .then(response => setRecipe(response.data))
             .catch(error => console.error('Error fetching recipe:', error));
@@ -18,7 +19,7 @@ const EditRecipe = ({ recipeId, onCancel, onUpdate }) => {
             })
             .catch(error => console.error('Error updating recipe:', error));
     };
-    
+
     if (!recipe) return <div>Loading...</div>;
 
     return (
