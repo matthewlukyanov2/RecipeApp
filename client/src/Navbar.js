@@ -1,4 +1,5 @@
 import React from 'react';
+//Navbar file for bootstrap
 
 const Navbar = () => {
   return (
