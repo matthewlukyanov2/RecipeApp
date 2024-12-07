@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import RecipeList from './RecipeList';
 import AddRecipe from './AddRecipe';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
   return (
