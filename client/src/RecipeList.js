@@ -48,8 +48,9 @@ const RecipeList = () => {
     return <div>Loading recipes...</div>;
   }
 
+
   return (
-    <div>
+    <div className="container mt-4">
       <h1>Recipe List</h1>
       <ul>
         {recipes.length > 0 ? (
