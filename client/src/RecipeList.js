@@ -51,23 +51,42 @@ const RecipeList = () => {
 
   return (
     <div className="container mt-4">
-      <h1>Recipe List</h1>
-      <ul>
+      <h1 className="text-center mb-4">Recipe List</h1>
+
+      {/* Recipe List Grid */}
+      <div className="row"></div>
         {recipes.length > 0 ? (
           recipes.map((recipe) => (
-            <li key={recipe._id}>
-              <h3>{recipe.title}</h3>
+            <div className="col-md-4 mb-4" key={recipe._id}>
+              <div className="card shadow-sm">
+                <div className="card-body">
+                  <h5 className="card-title">{recipe.title}</h5>
               <p><strong>Ingredients:</strong> {recipe.ingredients.join(', ')}</p>
               <p><strong>Instructions:</strong> {recipe.instructions}</p>
               <p><strong>Cooking Time:</strong> {recipe.cookingTime} minutes</p>
-              <button onClick={() => setEditingRecipe(recipe)}>Edit</button>
-              <button onClick={() => deleteRecipe(recipe._id)}>Delete</button>
-            </li>
+              <div className="d-flex justify-content-between">
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => setEditingRecipe(recipe)}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => deleteRecipe(recipe._id)}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
           ))
         ) : (
           <p>No recipes found.</p>
         )}
-      </ul>
+      
       {/* Conditionally render EditRecipe */}
       {editingRecipe && (
         <EditRecipe
