@@ -23,8 +23,8 @@ const EditRecipe = ({ recipeId, onCancel, onUpdate }) => {
     if (!recipe) return <div>Loading...</div>;
 
     return (
-        <div className="edit-recipe">
-            <h2>Edit Recipe</h2>
+        <div className="container mt-4">
+      <h2 className="text-center">Edit Recipe</h2>
             <input
                 type="text"
                 value={recipe.title}
