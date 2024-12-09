@@ -6,6 +6,7 @@ const AddRecipe = () => {
     const [ingredients, setIngredients] = useState('');
     const [instructions, setInstructions] = useState('');
     const [cookingTime, setCookingTime] = useState('');
+    const [image, setImage] = useState(''); 
 
 
     const handleSubmit = (e) => {
@@ -14,7 +15,8 @@ const AddRecipe = () => {
           title,
           ingredients: ingredients.split(',').map(ingredient => ingredient.trim()),
           instructions,
-          cookingTime: parseInt(cookingTime)
+          cookingTime: parseInt(cookingTime),
+          image
         };
 
         axios.post('http://localhost:4000/api/recipes', newRecipe)
@@ -25,6 +27,7 @@ const AddRecipe = () => {
           setIngredients('');
           setInstructions('');
           setCookingTime('');
+          setImage(''); 
         })
         .catch(error => {
           console.error('Error adding recipe:', error);
@@ -68,6 +71,15 @@ const AddRecipe = () => {
                 value={cookingTime} 
                 onChange={(e) => setCookingTime(e.target.value)} 
                 required
+              />
+            </div>
+            <div>
+              <label>Image URL</label> 
+              <input
+                type="text"
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
+                placeholder="Enter image URL"
               />
             </div>
             <button type="submit">Add Recipe</button>
