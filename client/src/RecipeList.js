@@ -59,6 +59,15 @@ const RecipeList = () => {
           recipes.map((recipe) => (
             <div className="col-md-4 mb-4" key={recipe._id}>
               <div className="card shadow-sm">
+                 {/* Conditionally render the image */}
+                 {recipe.image && (
+                  <img
+                    src={recipe.image}
+                    alt={recipe.title}
+                    className="card-img-top"
+                    style={{ height: '200px', objectFit: 'cover' }}
+                  />
+                )}
                 <div className="card-body">
                   <h5 className="card-title">{recipe.title}</h5>
               <p><strong>Ingredients:</strong> {recipe.ingredients.join(', ')}</p>
