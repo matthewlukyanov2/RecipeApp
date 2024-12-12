@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './App.css';
 
 const AddRecipe = () => {
     const [title, setTitle] = useState('');
@@ -36,11 +37,12 @@ const AddRecipe = () => {
 
     return (
         <div>
-          <h2>Add a New Recipe</h2>
           <form onSubmit={handleSubmit}>
+          <h2>Add a New Recipe</h2>       
             <div>
-              <label>Title</label>
+              <label htmlFor="title">Title</label>
               <input 
+                id="title"
                 type="text" 
                 value={title} 
                 onChange={(e) => setTitle(e.target.value)} 
@@ -48,8 +50,9 @@ const AddRecipe = () => {
               />
             </div>
             <div>
-              <label>Ingredients (comma separated)</label>
+              <label htmlFor="ingredients">Ingredients (comma separated)</label>
               <input 
+                id="ingredients"
                 type="text" 
                 value={ingredients} 
                 onChange={(e) => setIngredients(e.target.value)} 
@@ -57,16 +60,18 @@ const AddRecipe = () => {
               />
             </div>
             <div>
-              <label>Instructions</label>
+              <label htmlFor="instructions">Instructions</label>
               <textarea 
+                id="instructions"
                 value={instructions} 
                 onChange={(e) => setInstructions(e.target.value)} 
                 required
               />
             </div>
             <div>
-              <label>Cooking Time (minutes)</label>
+              <label htmlFor="cookingTime">Cooking Time (minutes)</label>
               <input 
+                id="cookingTime"
                 type="number" 
                 value={cookingTime} 
                 onChange={(e) => setCookingTime(e.target.value)} 
@@ -74,8 +79,9 @@ const AddRecipe = () => {
               />
             </div>
             <div>
-              <label>Image URL</label> 
+              <label htmlFor="image">Image URL</label> 
               <input
+                id="image"
                 type="text"
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
