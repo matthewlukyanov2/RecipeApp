@@ -12,6 +12,16 @@ const AddRecipe = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (!title || !ingredients || !instructions || !cookingTime) {
+          alert("Please fill in all required fields!");
+          return;
+      }
+  
+      if (cookingTime <= 0) {
+          alert("Cooking time must be greater than zero!");
+          return;
+      }
+      
         const newRecipe = {
           title,
           ingredients: ingredients.split(',').map(ingredient => ingredient.trim()),
