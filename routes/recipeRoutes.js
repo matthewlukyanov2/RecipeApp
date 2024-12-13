@@ -63,12 +63,12 @@ router.get('/recipes/:id', async (req, res) => {
 router.put('/recipes/:id', async (req, res) => {
     try {
         const { id } = req.params; // Get the recipe ID from the URL
-        const updatedData = req.body; // Get the updated recipe data from the request body
+        const updatedData = req.body; 
 
         // Find the recipe by ID and update it
         const updatedRecipe = await Recipe.findByIdAndUpdate(id, updatedData, {
-            new: true, // Return the updated recipe after the update
-            runValidators: true, // Ensure data validation
+            new: true, 
+            runValidators: true, 
         });
 
         if (!updatedRecipe) {
@@ -85,8 +85,8 @@ router.put('/recipes/:id', async (req, res) => {
 // DELETE route to delete a recipe
 router.delete('/recipes/:id', async (req, res) => {
     try {
-        const { id } = req.params; // Extract the ID from the request parameters
-        const deletedRecipe = await Recipe.findByIdAndDelete(id); // Find and delete the recipe by ID
+        const { id } = req.params; 
+        const deletedRecipe = await Recipe.findByIdAndDelete(id); 
 
         if (!deletedRecipe) {
             return res.status(404).json({ message: 'Recipe not found' });

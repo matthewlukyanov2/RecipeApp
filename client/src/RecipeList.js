@@ -64,13 +64,13 @@ const RecipeList = () => {
           recipes.map((recipe) => (
             <div className="col-md-4 mb-4" key={recipe._id}>
               <div className="card shadow-sm">
-                {/* Image with fallback */}
+                {/* Image with fallback error*/}
                 <img
                   src={recipe.image || "https://via.placeholder.com/150"} // Default if no image URL
                   alt={recipe.title || "Recipe Image"}
                   className="card-img-top"
                   style={{ height: '200px', objectFit: 'cover' }}
-                  onError={(e) => e.target.src = "https://via.placeholder.com/150"} // Fallback on error
+                  onError={(e) => e.target.src = "https://via.placeholder.com/150"} 
                 />
                 <div className="card-body">
                   <h5 className="card-title">{recipe.title}</h5>

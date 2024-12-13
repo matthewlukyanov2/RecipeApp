@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const EditRecipe = ({ recipeId, onCancel, onUpdate }) => {
+    // State to store the recipe data when fetched from the backend
     const [recipe, setRecipe] = useState(null);
 
+     // Fetch the recipe data when recipeId changes
     useEffect(() => {
         console.log('Editing recipe ID:', recipeId); // Debugging
         axios.get(`http://localhost:4000/api/recipes/${recipeId}`)
@@ -11,6 +13,7 @@ const EditRecipe = ({ recipeId, onCancel, onUpdate }) => {
             .catch(error => console.error('Error fetching recipe:', error));
     }, [recipeId]);
 
+    // Handle save operation for the edited recipe
     const handleSave = () => {
         axios.put(`http://localhost:4000/api/recipes/${recipeId}`, recipe)
             .then(response => {
@@ -20,6 +23,7 @@ const EditRecipe = ({ recipeId, onCancel, onUpdate }) => {
             .catch(error => console.error('Error updating recipe:', error));
     };
 
+    // Show loading message if recipe data is not yet loaded
     if (!recipe) return <div>Loading...</div>;
 
     //test

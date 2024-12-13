@@ -3,15 +3,17 @@ import axios from 'axios';
 import './App.css';
 
 const AddRecipe = () => {
+  // State hooks to manage form inputs
     const [title, setTitle] = useState('');
     const [ingredients, setIngredients] = useState('');
     const [instructions, setInstructions] = useState('');
     const [cookingTime, setCookingTime] = useState('');
     const [image, setImage] = useState(''); 
 
-
+    // Handle the form submission
     const handleSubmit = (e) => {
         e.preventDefault();
+        // Check if all required fields are filled out
         if (!title || !ingredients || !instructions || !cookingTime) {
           alert("Please fill in all required fields!");
           return;
@@ -21,7 +23,8 @@ const AddRecipe = () => {
           alert("Cooking time must be greater than zero!");
           return;
       }
-      
+
+        // Prepare the new recipe object
         const newRecipe = {
           title,
           ingredients: ingredients.split(',').map(ingredient => ingredient.trim()),
@@ -30,6 +33,7 @@ const AddRecipe = () => {
           image
         };
 
+        // Send the new recipe to the backend via a POST request
         axios.post('http://localhost:4000/api/recipes', newRecipe)
         .then(response => {
           console.log('Recipe added:', response.data);
@@ -48,7 +52,8 @@ const AddRecipe = () => {
     return (
         <div>
           <form onSubmit={handleSubmit}>
-          <h2>Add a New Recipe</h2>       
+          <h2>Add a New Recipe</h2>      
+          {/* Inputs for all my recipe fill in forms */} 
             <div>
               <label htmlFor="title">Title</label>
               <input 
