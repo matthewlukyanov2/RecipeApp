@@ -48,6 +48,11 @@ https://react.dev/reference/react-dom/components/form
 Building forms in react in EditRecipe.js
 https://www.freecodecamp.org/news/how-to-build-forms-in-react/
 
+Using bootstrap for desing
+https://getbootstrap.com/docs/4.0/components/forms/
+
+
+
 Creating Bootstrap Navbar in Navbar.js
 https://getbootstrap.com/docs/4.0/components/navbar/
 
