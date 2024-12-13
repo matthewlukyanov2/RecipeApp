@@ -8,6 +8,7 @@ router.post('/recipes', async (req, res) => {
     const ingredients = req.body.ingredients;
     const instructions = req.body.instructions;
     const cookingTime = req.body.cookingTime;
+    const image = req.body.image;
 
     try {
         // Create a new Recipe instance
@@ -16,6 +17,7 @@ router.post('/recipes', async (req, res) => {
             ingredients,
             instructions,
             cookingTime,
+            image,
         });
 
         // Save the new recipe to the database
